@@ -1,0 +1,121 @@
+.\" File generated using by MAQAO.
+.TH MAQAO "1" "10/02/2013" "MAQAO 2.0.0" "User Commands"
+.SH NAME
+maqao \- manual page for maqao module.
+.SH SYNOPSIS
+maqao <command>|<script.lua> [...]
+.SH DESCRIPTION
+MAQAO (Modular Assembly Quality Analyzer and Optimizer) is a tool to analyze the performance of applications. The main originality of MAQAO is its abilities to deal directly with the binary code of the application.
+.SH OPTIONS
+.TP
+\fB<command>\fR
+<command> can be a built-in module or a user module. Each module has its own options  described using maqao <command> --help. Only built-in modules are described here. The  list of available modules can be get using maqao --list-modules. Available values are: 
+.TP 20 
+\fB       analyze\fR 
+Performs static analysis on a binary.
+.TP 20 
+\fB       cqa\fR 
+The Code Quality Analyzer module provides users with high level reports containing  issues, hints and possible workarounds related to a set of given loops.
+.TP 20 
+\fB       perfeval\fR 
+Locate functions and loops hotspots.
+.TP 20 
+\fB       madras\fR 
+Disassemble, patch or display data on a binary.
+.
+.SH ""
+.TP
+\fB<script.lua>\fR
+A user LUA script. The script name must be finished by the ".lua" extension
+.TP
+\fB\-\-list-modules\fR
+List all available modules and alias.
+.SH "    CREATE A MODULE"
+.TP
+\fB\-\-module-skeleton\fR
+Create a skeleton for a new module.
+.TP
+\fB\-\-mod\fR\=<module>
+Specify the name of the module.
+.TP
+\fB\-\-output\fR\=<path>
+Path where the skeleton must be created. Default path is $PWD.
+.SH "    HANDLE COMPLETION"
+.TP
+\fB\-\-generate-complete\fR
+Create a bash script containing functions for completion and update .bashrc file to load it (if  possible).
+.TP
+\fB\-\-no-bashrc\fR
+Make the option --generate-complete to not update .bashrc file. Instead, the bash code is displayed.
+.TP
+\fB\-\-unload-complete\fR
+Remove code used to handle completion for MAQAO from .bashrc and remove $HOME/.maqao_complete.sh.
+.SH "    MAN PAGE"
+.TP
+\fB\-\-generate-man\fR
+Generate the man page of the module based on the module help in current directory. The generated file is called maqao-<module>.1. Once the man page is generated, the program exits.
+.TP
+\fB\-\-output\fR\=<path>
+Specify the path where the man page is generated.
+.SH "    COMMON OPTIONS"
+.TP
+\fB\-\-compiler\fR\=<compiler>
+Select the compiler used to create the binary. Available values are: 
+GNU, Intel.
+
+.TP
+\fB\-\-language\fR\=<language>
+Select the source language. Available values are: 
+c, c++, fortran.
+
+.TP
+\fB\-\-uarch\fR\=<uarch>
+Select the micro architecture used for analysis. Available values are: 
+CORE2_65, CORE2_45, NEHALEM, SANDY_BRIDGE, IVY_BRIDGE, HASWELL.
+
+.TP
+\fB\-ifr\fR, \fB\-\-interleaved-functions-recognition\fR\=<mode>
+Select the mode of interleaved functions recognition. Available values are: 
+.TP 20 
+\fB       off\fR 
+Functions are not extracted from connected components.
+.TP 20 
+\fB       debug_based\fR  (default)
+Fonctions are extracted from connected components matching with debug data.
+.TP 20 
+\fB       all\fR 
+All connected components are extracted into new functions whatever there  are corresponding debug data or not
+.
+.SH ""
+.TP
+\fB\-dbg\fR, \fB\-\-debug\fR[\=<level>]
+Enable debug messages. <level> can be used to specify the level of debug messages to display. Available values are: 
+0, 1 (default).
+
+.TP
+\fB\-\-\fR
+Specify binary parameters for dynamic analysis. Next options are ignored by MAQAO.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print the current help.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Print the current version.
+.SH EXAMPLES
+.TP
+$ maqao analyze -s
+Run STAN static analysis module
+.TP
+$ maqao script.lua
+Run a lua script through MAQAO
+.SH AUTHOR
+Written by The MAQAO Team.
+.SH "REPORTING BUGS"
+Report bugs to <support@maqao.org>.
+.SH COPYRIGHT
+Copyright (C) 2004 - 2013 Universite de Versailles Saint-Quentin-en-Yvelines (UVSQ)
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+.SH "SEE ALSO"
+maqao-madras(1), maqao-cqa(1), maqao-mil(1), maqao-analyze(1), maqao-perfeval(1), maqao-analyze-grouping(1)

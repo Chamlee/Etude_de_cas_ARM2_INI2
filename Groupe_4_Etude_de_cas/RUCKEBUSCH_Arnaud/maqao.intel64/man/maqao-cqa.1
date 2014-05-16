@@ -1,0 +1,89 @@
+.\" File generated using by MAQAO.
+.TH MAQAO-CQA "1" "10/02/2013" "MAQAO-CQA 2.0.0" "User Commands"
+.SH NAME
+maqao-cqa \- manual page for maqao cqa module.
+.SH SYNOPSIS
+maqao cqa <binary> [fct=<functions> | loop=<loops>] [...]
+.SH DESCRIPTION
+This module analyzes innermost loops in given functions or identified by their ID.
+.SH OPTIONS
+.TP
+\fB\-\-fct\fR\=<functions>
+Select functions to analyze: foo or "foo, bar". Names are interpreted  as LUA patterns/regexps: for exact match, use "^foo$" instead of foo.
+.TP
+\fB\-\-loop\fR\=<loops>
+Select loops to analyze: 17 or "17, 19".
+.TP
+\fB\-\-lvl\fR\=<level>
+Abstraction level of the stdout report (optional) Available values are: 
+1, 2 (default).
+
+.SH "    ADVANCED OPTIONS"
+.TP
+\fB\-\-loop_dist\fR\=<positive integer>
+Override LOOP_MERGE_DISTANCE default value. Prevents loop unrolling detector from assuming close source lines correspond to the same loop.
+.TP
+\fB\-\-max_paths\fR\=<positive integer>
+Override MAX_NB_PATHS default value, allow to analyze loops with more paths.
+.SH "    MAN PAGE"
+.TP
+\fB\-\-generate-man\fR
+Generate the man page of the module based on the module help in current directory. The generated file is called maqao-<module>.1. Once the man page is generated, the program exits.
+.TP
+\fB\-\-output\fR\=<path>
+Specify the path where the man page is generated.
+.SH "    COMMON OPTIONS"
+.TP
+\fB\-\-compiler\fR\=<compiler>
+Select the compiler used to create the binary. Available values are: 
+GNU, Intel.
+
+.TP
+\fB\-\-language\fR\=<language>
+Select the source language. Available values are: 
+c, c++, fortran.
+
+.TP
+\fB\-\-uarch\fR\=<uarch>
+Select the micro architecture used for analysis. Available values are: 
+CORE2_65, CORE2_45, NEHALEM, SANDY_BRIDGE, IVY_BRIDGE, HASWELL.
+
+.TP
+\fB\-ifr\fR, \fB\-\-interleaved-functions-recognition\fR\=<mode>
+Select the mode of interleaved functions recognition. Available values are: 
+.TP 20 
+\fB       off\fR 
+Functions are not extracted from connected components.
+.TP 20 
+\fB       debug_based\fR  (default)
+Fonctions are extracted from connected components matching with debug data.
+.TP 20 
+\fB       all\fR 
+All connected components are extracted into new functions whatever there  are corresponding debug data or not
+.
+.SH ""
+.TP
+\fB\-dbg\fR, \fB\-\-debug\fR[\=<level>]
+Enable debug messages. <level> can be used to specify the level of debug messages to display. Available values are: 
+0, 1 (default).
+
+.TP
+\fB\-\-\fR
+Specify binary parameters for dynamic analysis. Next options are ignored by MAQAO.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print the current help.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Print the current version.
+.SH AUTHOR
+Written by The MAQAO Team.
+.SH "REPORTING BUGS"
+Report bugs to <support@maqao.org>.
+.SH COPYRIGHT
+Copyright (C) 2004 - 2013 Universite de Versailles Saint-Quentin-en-Yvelines (UVSQ)
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
+.SH "SEE ALSO"
+maqao(1), maqao-madras(1), maqao-mil(1), maqao-analyze(1), maqao-perfeval(1), maqao-analyze-grouping(1)

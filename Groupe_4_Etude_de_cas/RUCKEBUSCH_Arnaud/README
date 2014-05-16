@@ -1,0 +1,35 @@
+######################################
+# Dossier de rendu RUCKEBUSCH Arnaud #
+######################################
+
+EXECUTER LES TESTS :
+
+./TEST_DRIVER.sh
+
+#ATTENTION : ce fichier ayant été exécuté en FailSafe cette ligne
+y est présente afin de pouvoir utiliser gcc puisque le bashrc
+n'est pas loadé en FailSafe.
+
+#Intel Compiler
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/lib/ia32
+PATH=$PATH:/opt/intel/bin
+
+Il faut donc la modifier/supprimer/conserver suivant votre système oubien si vous n'utilisez pas le mode FailSafe.
+
+Pour que les rapports soit générés efficacement il faut également que likwid soit installé.
+
+=>Les résultats serons consultables pour chaque tests dans les
+fichiers : resultats<nom_de_l'optim>.txt
+
+FICHIERS INCLUS :
+
+Rapport_Ruckebusch.pdf : Rapport personnel de l'étude de cas
+kernel.c / kernel_opti1.c / kernel_opti2.c : Fichier contenant la 
+fonction kernel ainsi que les différentes optimisations
+test_archi.c : driver de l'application
+test_generique.sh : script permettant de générer les résultats au sein d'un même fichier
+maqao : exécutable de maqao pour pouvoir avoir les rapports maqao
+TEST_DRIVER.sh : script a lancer pour l'éxécution de tous les tests
+
+
+
